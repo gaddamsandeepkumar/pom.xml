@@ -3,14 +3,17 @@ pipeline{
         stages{
             stage('when condition'){
                 input{
-                    message: 'enter age:'
+                    message "enter your age:"
                     ok 'ok'
                     parameters {
-                        string(name: 'age', defaultValue: '0', description: 'age')
+                        string(name: "age", defaultValue: "0", description: "age")
                     }
                 }
                 when{
-                    equals expected: '26' actual: "$(age)"
+                    equals expected: "26" actual: "$(age)"
+                }
+                steps{
+                    echo "enter your age $(age)"
                 }
         }
 
